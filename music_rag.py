@@ -1,7 +1,8 @@
 '''
-ToDo:
-    1. Repo
-    2. Write-up
+Extra steps: 
+1. Spotify client and secrets
+2. Set OPENAI_API_KEY
+3. Install requirements.txt
 '''
 
 import os
@@ -11,9 +12,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from langchain.chat_models import init_chat_model
 from langchain_core.vectorstores import InMemoryVectorStore
-from lyrics import *
+from spotify_client import *
 
-os.environ.setdefault("TIKTOKEN_CACHE_DIR", r"C:\Users\delgado.jd.7\.tiktoken")
 
 llm = init_chat_model("gpt-4.1-nano", model_provider="openai")
 
@@ -78,8 +78,3 @@ if __name__ == "__main__":
     print(f'Prompt:\n{prompt}')
     print(f'Baseline response\n{response_baseline}')
     print(f'RAG respone\n{response_RAG}')
-
-    # response_baseline = llm.invoke('What popular song talks about a specific month slipping away in a moment?').content
-    # response_RAG= generate(v_s,'What popular song talks about a specific month slipping away in a moment?')
-    # print('Baseline response\n'+response_baseline)
-    # print('RAG respone\n'+response_RAG)
